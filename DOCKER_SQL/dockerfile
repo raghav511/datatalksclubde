@@ -1,12 +1,15 @@
+# getting the base image from docker hub
 FROM python:3.9
-
+# running the update command
 RUN pip install --upgrade pip
-
+# running the install command
 RUN pip install pandas
 RUN pip install pyarrow
 RUN pip install numpy
-
+# setting the working directory inside our container
 WORKDIR /app
+# copying the file from our local to the container
 COPY pipeline.py pipeline.py
-
-ENTRYPOINT [ "bash" ]
+# setting the entrypoint after the container is built
+# ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "python", "pipeline.py" ]
